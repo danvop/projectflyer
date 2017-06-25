@@ -8,7 +8,11 @@ use App\Http\Requests\FlyerRequest;
 use Illuminate\Http\Request;
 
 class FlyersController extends Controller
-{
+{   
+    public function __construct()
+    {
+        
+    }
     /**
      * Display a listing of the resource.
      *
