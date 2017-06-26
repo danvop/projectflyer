@@ -4,7 +4,13 @@ Route::get('/', function () {
     return view('pages.home');
 });
 
+// Authentication routes...
 
 Route::resource('flyers', 'FlyersController');
 Route::get('{zip}/{street}', 'FlyersController@show');
 Route::post('{zip}/{street}/photos', 'FlyersController@addPhoto');
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
