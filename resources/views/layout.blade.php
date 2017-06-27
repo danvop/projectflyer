@@ -10,7 +10,7 @@
 
 
 
-  <nav class="navbar navbar-inverse navbar-fixed-top">
+  <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -27,7 +27,14 @@
           <li><a href="#about">About</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <ul class="nav navbar-nav navbar-right">
+        
+        @if ($signedIn)
+          <p class="nav navbar-text navbar-right">
+            Hello, {{ Auth::user()->name}}
+          </p>
+        @endif  
+{{-- native auth menu commented --}}
+{{--         <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
                             <li><a href="{{ route('login') }}">Login</a></li>
@@ -53,7 +60,7 @@
                                 </ul>
                             </li>
                         @endif
-                    </ul>
+                    </ul> --}}
       </div><!--/.nav-collapse -->
     </div>
   </nav>

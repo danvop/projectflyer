@@ -24,7 +24,7 @@ class Photo extends Model
      * The base directory, where photos are stored.
      * @var string
      */
-    protected $baseDir = 'flyers/photos';
+    protected $baseDir = 'images/photos';
 
     public function flyer()
     {

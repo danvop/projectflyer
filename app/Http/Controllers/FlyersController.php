@@ -14,6 +14,8 @@ class FlyersController extends Controller
     {
         $this->middleware('auth', ['except' => ['show']]);
        // $this->middleware('auth');
+       
+       parent::__construct();
     }
     /**
      * Display a listing of the resource.
