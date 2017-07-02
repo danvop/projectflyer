@@ -1,8 +1,10 @@
 <?php
 
-Route::get('/', function () {
-    return view('pages.home');
-});
+Route::get('/', 'PagesController@home');
+
+// Route::get('/', function () {
+//     return view('pages.home');
+// });
 
 // Authentication routes...
 
@@ -14,3 +16,4 @@ Route::post('{zip}/{street}/photos', 'FlyersController@addPhoto');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@index');

@@ -28,9 +28,10 @@
           <li><a href="#contact">Contact</a></li>
         </ul>
         
-        @if ($signedIn)
+
+        @if (Auth::check())
           <p class="nav navbar-text navbar-right">
-            Hello, {{ Auth::user()->name}}
+            Hello, {{ Auth::user()->name }}
           </p>
         @endif  
 {{-- native auth menu commented --}}
@@ -69,7 +70,7 @@
         @yield('content')
     </div>
 <script src="/js/libs.js"></script>
-<script src="{{ asset('js/app.js') }}"></script>
+{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @yield('scripts.footer')
 
 @include('flash')
