@@ -14,6 +14,7 @@ class ChangeFlyerRequest extends FormRequest
      */
     public function authorize()
     {
+        
         return Flyer::where([
             'zip' => $this->zip,
             'street' => $this->street,
