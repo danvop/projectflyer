@@ -19,17 +19,20 @@
                         </div>
                     @endforeach
                 </div> 
-            @endforeach       
+            @endforeach
+
+            @if ($user && $user->owns($flyer))
+                <hr>
+
+                <form id="addPhotosForm" 
+                    action="/{{ $flyer->zip }}/{{ $flyer->street }}/photos"
+                    method="POST" 
+                    class="dropzone">
+                    {{ csrf_field() }} 
+                </form>  
+            @endif     
         </div>
     </div>
-
-    <hr>
-
-    <h2>Add your photos</h2>
-
-    <form id="addPhotosForm" action="/{{ $flyer->zip }}/{{ $flyer->street }}/photos" method="POST" class="dropzone">
-        {{ csrf_field() }} 
-    </form>
 @stop
 
 @section('scripts.footer')
