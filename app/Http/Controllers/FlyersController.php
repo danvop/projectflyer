@@ -3,11 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Flyer;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\AddPhotoRequest;
-use App\Http\Requests\FlyerRequest;
-use App\Photo;
 use Illuminate\Http\Request;
+use App\Http\Requests\FlyerRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class FlyersController extends Controller
@@ -46,11 +44,14 @@ class FlyersController extends Controller
      */
     public function store(FlyerRequest $request)
     {
-        Flyer::create($request->all());
+        $this->user = Auth::user();
+        $flyer = $this->user->publish(
+            new Flyer($request->all())
+        );
 
         flash()->success('Success', 'Your flyer has been created');
          
-        return redirect()->back();//temporary
+        return redirect(flyer_path($flyer));
     }
 
     /**
@@ -64,24 +65,11 @@ class FlyersController extends Controller
         return view('flyers.show', compact('flyer', 'user'));
     }
     /**
-     * Apply a photo to the referenced flyer
-     * @param string  $zip
-     * @param string  $street
-     * @param AddPhotoRequest $request
-     */
-    public function addPhoto($zip, $street, AddPhotoRequest $request)
-    {
-        $photo = Photo::fromFile($request->file('photo'));
-
-        Flyer::locatedAt($zip, $street)->addPhoto($photo);
-    }
-
-        /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for editing the specified resource.
+    *
+    * @param  int  $id
+    * @return \Illuminate\Http\Response
+    */
     public function edit($id)
     {
         //
