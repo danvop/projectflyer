@@ -13,7 +13,9 @@ const { mix } = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css')
-   .js('resources/assets/js/libs/sweetalert-dev.js', 'public/js/libs.js')
-   .styles('resources/assets/css/libs/sweetalert.css', 'public/css/libs.css')
+   .js(['resources/assets/js/libs/sweetalert-dev.js',
+        'resources/assets/js/libs/lity.js'], 'public/js/libs.js')
+   .styles(['resources/assets/css/libs/sweetalert.css',
+            'resources/assets/css/libs/lity.css'], 'public/css/libs.css')
    ;
 
