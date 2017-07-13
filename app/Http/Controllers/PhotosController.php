@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Photo;
 use App\Flyer;
 use App\AddPhotoToFlyer;
 use Illuminate\Http\Request;
@@ -21,5 +22,12 @@ class PhotosController extends Controller
         $photo = $request->file('photo');
 
         (new AddPhotoToFlyer($flyer, $photo))->save();
+    }
+
+    public function destroy($id)
+    {
+        Photo::findOrFail($id)->delete();
+
+        return back();
     }
 }

@@ -48,8 +48,12 @@ class Photo extends Model
         $this->thumbnail_path = $this->baseDir() . '/tn-' . $name;
     }
 
-    /**
-     * Move the photo to the proper folder.
-     * @return self
-     */
+    public function delete()
+    {
+        \File::delete([
+            $this->path,
+            $this->thumbnail_path
+        ]);
+        parent::delete();
+    }
 }

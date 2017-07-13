@@ -3,8 +3,8 @@
 @section('content')
     <div class="row">
         <div class="col-md-4">    
-            <h1>{!! $flyer->street !!}</h1>
-            <h2>{!! $flyer->price !!}</h2>
+            <h1>{{ $flyer->street }}</h1>
+            <h2>{{ $flyer->price }}</h2>
 
             <hr>
 
@@ -15,9 +15,11 @@
                 <div class="row">
                     @foreach ($set as $photo)
                         <div class="col-md-3 gallery__image">
-                        <a href="/{{ $photo->path }}" data-lity>
-                           <img src="/{{ $photo->thumbnail_path }}"> 
-                        </a>
+                            {!! link_to('Delete', "{$photo->id}", 'DELETE') !!}
+
+                            <a href="/{{ $photo->path }}" data-lity>
+                                <img src="/{{ $photo->thumbnail_path }}"> 
+                            </a>
                            </div>
                     @endforeach
                 </div> 
